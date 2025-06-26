@@ -1,0 +1,590 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_moove/footer
+
+    Page footer.
+
+    Example context (json):
+    {
+        "output": {
+            "page_doc_link": "Help and documentation",
+            "supportemail": "<a href=\"#\">Contact site support</a>",
+            "has_popover_links": true,
+            "services_support": "Services and support",
+            "login_info": "You are logged in as cute kitten",
+            "moodle_release": "90210"
+        }
+    }
+}}
+
+<footer id="page-footer">
+    <div class="moove-container-fluid footer-columns">
+        <div class="row">
+            <div class="col-md-4 column-left">
+                <div class="contact">
+                    <h3 class="footer-title">{{#str}}contactus, theme_moove{{/str}}</h3>
+
+                    <ul>
+                        {{#website}}
+                            <li>
+                                <a href="{{{website}}}" target="_blank" class="website btn btn-link">
+                                    <i class="fa fa-globe"></i>
+                                </a>
+                            </li>
+                        {{/website}}
+                        {{#mobile}}
+                            <li>
+                                <a href="tel:{{{mobile}}}" target="_blank" class="mobile btn btn-link">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                            </li>
+                        {{/mobile}}
+                        {{#mail}}
+                            <li>
+                                <a href="mailto:{{{mail}}}" target="_blank" class="mail btn btn-link">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </li>
+                        {{/mail}}
+                    </ul>
+                </div>
+
+                <div class="socialnetworks">
+                    <h3 class="footer-title">{{#str}}followus, theme_moove{{/str}}</h3>
+
+                    <ul class="mb-0">
+                        {{#facebook}}
+                            <li>
+                                <a href="{{{facebook}}}" target="_blank" class="facebook btn btn-link btn-rounded">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                        {{/facebook}}
+
+                        {{#twitter}}
+                            <li>
+                                <a href="{{{twitter}}}" target="_blank" class="twitter btn btn-link btn-rounded">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                        {{/twitter}}
+
+                        {{#linkedin}}
+                            <li>
+                                <a href="{{{linkedin}}}" target="_blank" class="linkedin btn btn-link btn-rounded">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        {{/linkedin}}
+
+                        {{#youtube}}
+                            <li>
+                                <a href="{{{youtube}}}" target="_blank" class="youtube btn btn-link btn-rounded">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
+                        {{/youtube}}
+
+                        {{#instagram}}
+                            <li>
+                                <a href="{{{instagram}}}" target="_blank" class="instagram btn btn-link btn-rounded">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        {{/instagram}}
+
+                        {{#whatsapp}}
+                            <li>
+                                <a href="https://api.whatsapp.com/send?phone={{{whatsapp}}}" target="_blank" class="whatsapp btn btn-link btn-rounded">
+                                    <i class="fa fa-whatsapp"></i>
+                                </a>
+                            </li>
+                        {{/whatsapp}}
+
+                        {{#telegram}}
+                            <li>
+                                <a href="{{{telegram}}}" target="_blank" class="telegram btn btn-link btn-rounded">
+                                    <i class="fa fa-telegram"></i>
+                                </a>
+                            </li>
+                        {{/telegram}}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 column-center">
+                {{# output.supportemail }}
+                    <div class="supportemail">{{{ output.supportemail }}}</div>
+                {{/ output.supportemail }}
+
+                {{{ output.login_info }}}
+
+                {{{ output.standard_footer_html }}}
+
+                <div class="tool_usertours-resettourcontainer"></div>
+            </div>
+            <div class="col-md-4 column-right">
+                {{#enablemobilewebservice}}
+                    {{#mobilesetuplink}}
+                        <a href="{{{mobilesetuplink}}}">{{#str}}getmoodleonyourmobile, tool_mobile{{/str}}</a>
+                    {{/mobilesetuplink}}
+                    {{^mobilesetuplink}}
+                        <h3 class="footer-title">{{#str}}getmoodleonyourmobile, tool_mobile{{/str}}</h3>
+                    {{/mobilesetuplink}}
+                    <div class="stores">
+                        {{#androidappid}}
+                            <a href="https://play.google.com/store/apps/details?id={{androidappid}}">
+                                <img src="{{config.wwwroot}}/theme/moove/pix/store_google.svg" alt="Play Store">
+                            </a>
+                        {{/androidappid}}
+                        {{#iosappid}}
+                            <a class="mt-1" href="https://apps.apple.com/app/id{{iosappid}}">
+                                <img src="{{config.wwwroot}}/theme/moove/pix/store_apple.svg" alt="App Store">
+                            </a>
+                        {{/iosappid}}
+                    </div>
+                {{/enablemobilewebservice}}
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-content-debugging footer-dark bg-dark text-light">
+        <div class="moove-container-fluid footer-dark-inner">
+            {{{ output.debug_footer_html }}}
+        </div>
+    </div>
+
+    <div data-region="footer-container-popover">
+        <button class="btn btn-icon bg-secondary icon-no-margin btn-footer-popover" data-action="footer-popover" aria-label="{{#str}}showfooter, theme_boost{{/str}}">
+            {{#pix}}e/question, core{{/pix}}
+        </button>
+    </div>
+    <div class="footer-content-popover container" data-region="footer-content-popover">
+        {{# output.has_popover_links }}
+            <div class="footer-section p-3 border-bottom">
+                {{# output.page_doc_link }}
+                    <div>{{{ output.page_doc_link }}}</div>
+                {{/ output.page_doc_link }}
+
+                {{# output.services_support_link }}
+                    <div>{{{ output.services_support_link }}}</div>
+                {{/ output.services_support_link }}
+            </div>
+        {{/ output.has_popover_links }}
+        <div class="footer-section p-3">
+            <div>{{#str}}poweredbymoodle, core{{/str}}</div>
+            {{#output.moodle_release}}
+                <div>
+                    {{#str}}version, core{{/str}} {{{ output.moodle_release }}}
+                </div>
+            {{/output.moodle_release}}
+        </div>
+    </div>
+
+    <div class="copyright">
+        <div class="madeby">
+            <p>{{#str}}themedevelopedby, theme_moove{{/str}}</p>
+            <a href="https://conecti.me">
+                <img src="{{config.wwwroot}}/theme/moove/pix/logo_conectime.svg" alt="Conecti.me" style="height: 40px;">
+            </a>
+        </div>
+    </div>
+
+<!-- Persistent Audio Player -->
+<div id="persistent-audio-player" style="display:none; position:fixed; bottom:0; left:0; right:0; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color:white; padding:12px 16px; z-index:9999; border-top:3px solid #3498db; box-shadow: 0 -4px 20px rgba(0,0,0,0.3); backdrop-filter: blur(10px);">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; gap: 12px;">
+        <button id="play-pause-btn" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color:white; border:none; padding:10px 16px; border-radius:8px; margin:2px; cursor:pointer; font-weight:600; font-size:14px; box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3); transition: all 0.3s ease; min-width: 80px;">
+            ▶️ Play
+        </button>
+
+        <div style="flex-grow:1; margin:0 15px; min-width: 300px;">
+            <div id="track-title" style="font-weight:600; margin-bottom:6px; font-size:14px; color:#ecf0f1; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Ready to play podcast</div>
+            <div style="display:flex; align-items:center; gap: 8px;">
+                <span id="current-time" style="font-size:11px; margin-right:8px; color:#bdc3c7; font-weight:500; min-width: 35px;">0:00</span>
+                <input id="seekbar" type="range" min="0" max="100" value="0" style="flex-grow:1; height:6px; border-radius:3px; background: linear-gradient(to right, #3498db 0%, #2c3e50 0%); outline:none; cursor:pointer; -webkit-appearance: none; appearance: none;">
+                <span id="total-time" style="font-size:11px; color:#bdc3c7; font-weight:500; min-width: 35px;">0:00</span>
+            </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap: wrap;">
+            <div style="display:flex; align-items:center; gap:6px;">
+                <label for="speed" style="font-size:11px; color:#bdc3c7; font-weight:500;">Speed:</label>
+                <select id="speed" style="font-size:11px; padding:4px 8px; border-radius:4px; border:none; background:#34495e; color:white; cursor:pointer; outline:none;">
+                    <option value="0.75">0.75x</option>
+                    <option value="1" selected>1x</option>
+                    <option value="1.25">1.25x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                </select>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:6px;">
+                <label for="volume" style="font-size:11px; color:#bdc3c7; font-weight:500;">Vol:</label>
+                <input id="volume" type="range" min="0" max="1" step="0.01" value="1" style="width:60px; height:4px; border-radius:2px; background:#34495e; outline:none; cursor:pointer; -webkit-appearance: none; appearance: none;">
+            </div>
+
+            <button id="skip-back" style="background:transparent; color:#ecf0f1; border:1px solid #34495e; padding:6px 10px; border-radius:6px; font-size:12px; cursor:pointer; transition: all 0.3s ease; font-weight:500;">⏪ 10s</button>
+            <button id="skip-forward" style="background:transparent; color:#ecf0f1; border:1px solid #34495e; padding:6px 10px; border-radius:6px; font-size:12px; cursor:pointer; transition: all 0.3s ease; font-weight:500;">⏩ 10s</button>
+            <button id="close-player" style="background:transparent; color:#e74c3c; border:none; padding:8px 12px; font-size:18px; cursor:pointer; border-radius:4px; transition: all 0.3s ease; font-weight:600;">✕</button>
+        </div>
+    </div>
+    <audio id="audio-element" preload="metadata"></audio>
+</div>
+
+<style>
+/* Enhanced range slider styling */
+#seekbar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.4);
+    transition: all 0.2s ease;
+}
+
+#seekbar::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.6);
+}
+
+#seekbar::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(52, 152, 219, 0.4);
+}
+
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #95a5a6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#volume::-webkit-slider-thumb:hover {
+    background: #bdc3c7;
+    transform: scale(1.1);
+}
+
+#volume::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #95a5a6;
+    cursor: pointer;
+    border: none;
+}
+
+/* Button hover effects */
+#play-pause-btn:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+#skip-back:hover, #skip-forward:hover {
+    background: rgba(52, 73, 94, 0.5);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+#close-player:hover {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+}
+
+#speed:hover {
+    background: #2c3e50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #persistent-audio-player > div {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #persistent-audio-player > div > div:first-of-type {
+        margin: 0;
+        min-width: unset;
+        width: 100%;
+    }
+    
+    #persistent-audio-player > div > div:last-child {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+</style>
+</footer>
+
+{{{ output.standard_end_of_body_html }}}
+
+{{#js}}
+require(['theme_moove/persistent_player'], function(PersistentPlayer) {
+    PersistentPlayer.init();
+});
+{{/js}}
+
+
+{{#js}}
+    require(['theme_boost/footer-popover'], function(FooterPopover) {
+        FooterPopover.init();
+    });
+{{/js}}
+
+
+<!-- Floating Chat Icon with Tooltip on the Left -->
+<div id="chatbot-icon" style="
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color:rgb(52, 155, 234);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+"
+onmouseover="document.getElementById('chat-tooltip').style.opacity='1';"
+onmouseout="document.getElementById('chat-tooltip').style.opacity='0';">
+
+    <img src="https://cdn-icons-png.flaticon.com/512/2462/2462719.png" alt="Chat" style="width: 30px; height: 30px;">
+
+    <!-- Tooltip -->
+    <span id="chat-tooltip" style="
+        position: absolute;
+        right: 70px; /* space from the icon */
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-family: 'Segoe UI', sans-serif;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        pointer-events: none;
+    ">
+        💬 Chat with VedaAI — AI for your AI questions
+        <span style="
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: -5px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 6px solid #333;
+        "></span>
+    </span>
+</div>
+
+
+<!-- Floating Chat Window Styles -->
+<style>
+  #chat-sidebar {
+    position: fixed;
+    bottom: 140px;
+    right: 20px;
+    width: 90%;
+    max-width: 570px;
+    height: 70vh;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(200%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9998;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #chat-sidebar iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @media (max-width: 600px) {
+    #chat-sidebar {
+      width: 95%;
+      right: 2.5%;
+      bottom: 80px;
+      height: 70vh;
+    }
+  }
+
+  #chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f1f1;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    height: 40px;
+  }
+
+  #chat-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+  }
+
+  #chat-close {
+    cursor: pointer;
+  }
+
+  #chat-close svg {
+    transition: box-shadow 0.2s ease;
+  }
+
+  #chat-close:hover svg {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  #chat-fullscreen svg {
+    transition: box-shadow 0.2s ease;
+  }
+  #chat-fullscreen:hover svg {
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .fullscreen-chat {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease-in-out;
+   }
+  .no-transition {
+    transition: none !important;
+  }
+</style>
+
+<!-- Chat Window -->
+<div id="chat-sidebar" class="no-transition">
+  <div id="chat-header">
+    <div id="chat-title">Chat</div>
+    <div style="display: flex; gap: 10px; align-items: center; margin-left: auto;">
+      <!-- Fullscreen Icon -->
+      <div id="chat-fullscreen" style="cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" viewBox="0 0 24 24">
+          <path d="M3 3h6v2H5v4H3V3zm18 0v6h-2V5h-4V3h6zm-6 18v-2h4v-4h2v6h-6zm-6 0H3v-6h2v4h4v2z"/>
+        </svg>
+      </div>
+      <!-- Close Icon -->
+      <div id="chat-close" style="cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 24 24">
+          <path d="M18 6L6 18M6 6l12 12" stroke="black" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat iframe -->
+  <iframe src="{{config.wwwroot}}/my/chat.php" scrolling="no"></iframe>
+</div>
+
+<!-- Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const icon = document.getElementById('chatbot-icon');
+  const chatSidebar = document.getElementById('chat-sidebar');
+  const closeBtn = document.getElementById('chat-close');
+  const fullscreenBtn = document.getElementById('chat-fullscreen');
+  const path = window.location.pathname;
+  const navbar = document.querySelector('nav.navbar');
+
+  let isFullscreen = false;
+
+  // On /my/chat.php page, hide components
+  if (path.includes('/my/chat.php')) {
+    if (icon) icon.style.display = 'none';
+    if (navbar) navbar.style.display = 'none';
+
+    const drawer = document.querySelector('[data-region="drawers"]');
+    if (drawer) drawer.style.display = 'none';
+    return;
+  }
+
+  // Load previous state from localStorage
+  let isOpen = localStorage.getItem('chatSidebarOpen') === 'true';
+
+  // Set initial state immediately
+  chatSidebar.style.transform = isOpen ? 'translateY(0)' : 'translateY(200%)';
+
+  // Remove no-transition after a short delay to ensure no flicker
+  setTimeout(() => {
+    chatSidebar.classList.remove('no-transition');
+  }, 50);
+
+  // Toggle open/close
+  icon?.addEventListener('click', function () {
+    isOpen = !isOpen;
+    chatSidebar.style.transform = isOpen ? 'translateY(0)' : 'translateY(200%)';
+    localStorage.setItem('chatSidebarOpen', isOpen);
+  });
+
+  // Close on X
+  closeBtn?.addEventListener('click', function () {
+    isOpen = false;
+    isFullscreen = false;
+    chatSidebar.classList.remove('fullscreen-chat');
+    chatSidebar.style.transform = 'translateY(200%)';
+    localStorage.setItem('chatSidebarOpen', isOpen);
+    icon.style.display = 'flex';
+  });
+  // Fullscreen button
+  fullscreenBtn?.addEventListener('click', function () {
+    isFullscreen = !isFullscreen;
+    if (isFullscreen) {
+        chatSidebar.classList.add('fullscreen-chat');
+        icon.style.display = 'none'; // Hide chat icon
+    } else {
+        chatSidebar.classList.remove('fullscreen-chat');
+        icon.style.display = 'flex'; // Show chat icon again
+    }
+ });
+});
+</script>
+
